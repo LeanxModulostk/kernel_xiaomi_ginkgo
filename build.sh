@@ -3,10 +3,10 @@
 set -e  # Exit immediately if a command exits with a non-zero status.
 
 SECONDS=0 # builtin bash timer
-ZIPNAME="Ghost-Mod.Kernel-Ginkgo$(TZ=Lima/America date +"%Y%m%d-%H%M").zip"
+ZIPNAME="Lean.Kernel-Ginkgo$(TZ=Europe/Istanbul date +"%Y%m%d-%H%M").zip"
 TC_DIR="$HOME/tc/weebx"
 AK3_DIR="$HOME/android/AnyKernel3"
-DEFCONFIG="vendor/ginkgo-perf_defconfig"
+DEFCONFIG="vendor/lean-perf_defconfig"
 
 # Create TC_DIR if it doesn't exist
 mkdir -p "$HOME/tc"
@@ -61,7 +61,7 @@ fi
 export PATH="${TC_DIR}/bin:$PATH"
 export KBUILD_COMPILER_STRING="$("${TC_DIR}/bin/clang" --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
 
-export KBUILD_BUILD_USER="linux"
+export KBUILD_BUILD_USER="Telegram"
 export KBUILD_BUILD_HOST="LeanHijosdesusMadres"
 export KBUILD_BUILD_VERSION="1"
 
@@ -93,6 +93,7 @@ make -j$(nproc --all) O=out \
     OBJDUMP=llvm-objdump \
     STRIP=llvm-strip \
     CROSS_COMPILE=aarch64-linux-gnu- \
+    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
     CLANG_TRIPLE=aarch64-linux-gnu- \
     Image.gz-dtb dtbo.img
 
