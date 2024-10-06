@@ -77,10 +77,11 @@ make -j$(nproc --all) O=out \
     OBJCOPY=llvm-objcopy \
     OBJDUMP=llvm-objdump \
     STRIP=llvm-strip \
-    CROSS_COMPILE=aarch64-linux-gnu- \
-    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+    CROSS_COMPILE=aarch64-linux-android- \
+    CROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
     CLANG_TRIPLE=aarch64-linux-gnu- \
-    Image.gz-dtb dtbo.img
+    Image.gz-dtb \
+    dtbo.img
 
 if [ -f "out/arch/arm64/boot/Image.gz-dtb" ] && [ -f "out/arch/arm64/boot/dtbo.img" ]; then
     echo -e "\nEl kernel se ha compilado correctamente. Empaquetando...\n"
