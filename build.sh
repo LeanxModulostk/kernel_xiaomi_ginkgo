@@ -78,6 +78,7 @@ make -j$(nproc --all) O=out \
     OBJDUMP=llvm-objdump \
     STRIP=llvm-strip \
     CROSS_COMPILE=aarch64-linux-gnu- \
+    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
     CLANG_TRIPLE=aarch64-linux-gnu- \
     Image.gz-dtb dtbo.img
 
